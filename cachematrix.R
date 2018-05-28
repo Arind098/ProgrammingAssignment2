@@ -1,4 +1,8 @@
-# Storing cached data
+## Put comments here that give an overall description of what your
+## functions do
+
+## Storing inverse matrix cached data
+
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y) {
@@ -13,15 +17,17 @@ makeCacheMatrix <- function(x = matrix()) {
        getInv = getInv)
 }
 
-#calculating Inverse of matrix and getting the cached data if available
-cacheSolve <- function(x) {
+
+##Calculate Inverse of matrix and getting the cached data if available
+
+cacheSolve <- function(x, ...) {
   m <- x$getInv()
   if(!is.null(m)) {
     message("getting cached data")
     return(m)
   }
   data <- x$get()
-  m <- solve(data)
+  m <- solve(data, ...)
   x$setInv(m)
   m
 }
